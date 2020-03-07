@@ -1,0 +1,50 @@
+#Crear una clase persona y otra empleado que hereda de la clase persona.
+#La clase persona tendra los atributos de nombre, edad y ciudad.
+#La clase empleado heredara la clase persona y tendra los atributos de sueldo y tipo de empleado.
+#Cada clase tendra una funcion imprimir los datos. Ademas se añadira una funcion general que indique
+#dependiendo del sueldo si el empleado debe o no pagar impuestos. Para ello consideraremos que una persona
+#que gana 1000 euros mensuales no paga impuestos
+
+class Persona():
+    def __init__(self,nombre,edad,ciudad):
+        self.nombre=nombre
+        self.edad=edad
+        self.ciudad=ciudad
+    
+    def __str__(self):
+        return 'Su nombre es {}, tiene {} años, vive en {}'.format(self.nombre,self.edad,self.ciudad)
+   
+    def imprimir(self):
+        print("Nombre:",self.nombre)
+        print("Edad:",self.edad)
+        print("Ciudad:",self.ciudad)
+
+class Empleado(Persona):
+    def __init__(self,nombre,edad, ciudad, sueldo, tipo_empleado):
+        super().__init__(nombre,edad, ciudad) #Llamamos a la otra funcion y clase PERSONA
+        self.sueldo=sueldo
+        self.tipo_empleado=tipo_empleado
+    def __str__(self):
+        return super().__str__()+', su sueldo es {} euros mensuales y es {}'.format(self.sueldo,self.tipo_empleado)
+    
+    def imprimir(self):
+        print("Nombre:",self.nombre)
+        print("Edad:",self.edad)
+        print("Ciudad:",self.ciudad)
+        print("Sueldo:",self.sueldo)
+        print("Tipo de empleado:",self.tipo_empleado)
+        
+    def impuestos(self):
+        if self.sueldo<=1000:
+            print(self.nombre, "no debe pagar impuestos")
+        else:
+            print(self.nombre, "debe pagar impuestos")
+
+Manuel=Empleado('Manuel', 37, 'Madrid', 950, 'Oficial')
+Maria=Empleado('Maria', 30, 'Barcelona', 1600, 'Tecnica')
+print(Manuel)
+print(Maria)
+Manuel.imprimir()
+Maria.imprimir()
+Manuel.impuestos()
+Maria.impuestos()
