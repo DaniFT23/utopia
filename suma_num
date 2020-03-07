@@ -1,0 +1,65 @@
+## (3 puntos) Crear una funcion que pida un numero y si se ingresa nada para salir.
+#Si el primer valor ingresado es nada, el programa devolvera. "La suma total es: 0.0".
+#El programa sumara todos los numeros ingresados. Esta funcion debera llamarse desde un main() y NO debe usar bucles.
+
+class Sumatorio:
+    def __init__(self):
+        self.list=[] #comenzamos con la lista vacia
+        self.suma=0 #comenzamos con la suma igual a 0
+    def menu(self): #establecemos una funcion de Menu
+        print()
+        menu=[
+            ['Lista'],
+            ['1. Añadir'],
+            ['2. Ver lista'],
+            ['3. Sumar'],
+            ['4. Cerrar lista']
+            ]
+        for x in range(5):
+            print(menu[x][0])
+        opcion=input("Introduzca una accion")
+        
+        if opcion=="":
+            print("Saliendo...")
+            pass        
+        else:
+            opcion=int(opcion)
+            
+            if opcion==1:
+                self.anadir()
+                self.menu()
+            elif opcion==2:
+                self.lista()
+                self.menu()
+            elif opcion==3:
+                self.sumar()
+                self.menu()
+            elif opcion==4:
+                print("Saliendo...")
+                pass
+            
+            #self.menu()
+
+    def anadir(self):
+        numero_ingresado=input("Ingrese un número: ")
+        if numero_ingresado=="0" and self.suma==0:
+            print("La suma total es:", self.suma)
+        else:
+            numero=float(numero_ingresado)
+            self.suma=self.suma+numero
+            self.list.append([numero]) #añadimos
+            
+    def lista(self):
+        print("Numeros en lista")
+        if len(self.list)==0: #comprobamos que la lista de contactos no este vacia
+            print("No hay numeros")
+        else:
+            for x in range(len(self.list)): #por cada valor de x en el rango de longitud de la lista
+                print(self.list[x])
+                
+    def sumar(self):
+        print("La suma de los numeros es: ", self.suma)
+        
+lista=Sumatorio()
+
+lista.menu()
