@@ -1,0 +1,159 @@
+#Crear una funcion que ingrese un numero entre 0 y 999. Y utilice un diccionario para transformar el numero a palabras,
+#por ejemplo: si se ingresa el numero 147, el programa devolvera "El numero ingresado es el: ciento cuarenta y siete".
+#(Hay que incluir un try-except para el caso en que no se ingrese un numero)
+
+numero_palabra = {0: 'Cero', 1: 'Uno', 2: 'Dos', 3: 'Tres', 4: 'Cuatro',
+                  5: 'Cinco', 6: 'Seis', 7: 'Siete', 8: 'Ocho',
+                  9: 'Nueve', 10: 'Diez', 11: 'Once', 12: 'Doce',
+                  13: 'Trece', 14: 'Catorce', 15: 'Quince', 16: 'Dieciseis',
+                  17: 'Diecisiete', 18: 'Dieciocho', 19: 'Diecinueve',
+                  20: 'Veinte', 30: 'Treinta', 40: 'Cuarenta', 50: 'Cincuenta',
+                  60: 'Sesenta', 70: 'Setenta', 80: 'Ochenta', 90: 'Noventa',
+                  100: 'Cien', 200: 'Doscientos', 300: 'Trescientos',
+                  400: 'Cuatrocientos', 500: 'Quinientos', 600: 'Seiscientos',
+                  700: 'Setecientos', 800: 'Ochocientos', 900: 'Novecientos'}
+
+numero_ingresado=input("Ingrese un número: ")
+
+#Utilizamos un Try-Except para asegurarnos que el valor introducido es un número:
+
+while numero_ingresado !="":
+    try:
+        n=float(numero_ingresado)
+        break
+    except ValueError:
+        print(numero_ingresado, " no es un número")
+    numero_ingresado=input("Ingrese un número: ")
+    
+#Una vez el número es introducido, utilizamos condicionales para definir la palabra correcta del diccionario para cada número: 
+        
+if n==100 or n==200 or n==300 or n==400 or n==500 or n==600 or n==700 or n==800 or n==900:
+    print ("El número ingresado es el", numero_palabra[n])
+    
+elif n>=0 and n<=20:
+    print ("El número ingresado es el", numero_palabra[n])
+
+#En el caso de los números comprendidos entre 21 y 29, estos no se nombran con "Veinte" sino "Veinti":
+
+elif n>20 and n<=29:
+    print ("El número ingresado es el", "Veinti"+numero_palabra[n%10].lower())
+
+#A partir del 31, restamos el resto para obtener la decena y añadimos el entero final en minusculas:
+
+elif n>=30 and n<100:
+    print ("El número ingresado es el", numero_palabra[n-n%10], "y", numero_palabra[n%10].lower())
+
+#Una vez llegado a 100, volvemos a repetir los mismos calculos restando la centena a n:
+
+elif n>=101 and n<=120:
+    n=n-100
+    print ("El número ingresado es el Ciento", numero_palabra[n].lower())
+    
+elif n>=121 and n<=129:
+    n=n-100
+    print ("El número ingresado es el Ciento", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=130 and n<200:
+    n=n-100
+    print ("El número ingresado es el Ciento", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+
+#De nuevo, mismos calculos pero restando 200 a n (y asi hasta 999):
+
+elif n>=201 and n<=220:
+    n=n-200
+    print ("El número ingresado es el Doscientos", numero_palabra[n].lower())
+    
+elif n>=221 and n<=229:
+    n=n-200
+    print ("El número ingresado es el Doscientos", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=230 and n<300:
+    n=n-200
+    print ("El número ingresado es el Doscientos", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+
+elif n>=301 and n<=320:
+    n=n-300
+    print ("El número ingresado es el Trescientos", numero_palabra[n].lower())
+    
+elif n>=321 and n<=329:
+    n=n-300
+    print ("El número ingresado es el Trescientos", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=330 and n<400:
+    n=n-300
+    print ("El número ingresado es el Trescientos", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+
+elif n>=401 and n<=420:
+    n=n-400
+    print ("El número ingresado es el Cuatrocientos", numero_palabra[n].lower())
+    
+elif n>=421 and n<=429:
+    n=n-400
+    print ("El número ingresado es el Cuatrocientos", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=430 and n<500:
+    n=n-400
+    print ("El número ingresado es el Cuatrocientos", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+
+elif n>=501 and n<=520:
+    n=n-500
+    print ("El número ingresado es el Quinientos", numero_palabra[n].lower())
+    
+elif n>=521 and n<=529:
+    n=n-500
+    print ("El número ingresado es el Quinientos", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=530 and n<600:
+    n=n-500
+    print ("El número ingresado es el Quinientos", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+    
+elif n>=601 and n<=620:
+    n=n-600
+    print ("El número ingresado es el Seiscientos", numero_palabra[n].lower())
+    
+elif n>=621 and n<=629:
+    n=n-600
+    print ("El número ingresado es el Seiscientos", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=630 and n<700:
+    n=n-600
+    print ("El número ingresado es el Seiscientos", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+
+elif n>=701 and n<=720:
+    n=n-700
+    print ("El número ingresado es el Setecientos", numero_palabra[n].lower())
+    
+elif n>=721 and n<=729:
+    n=n-700
+    print ("El número ingresado es el Setecientos", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=730 and n<800:
+    n=n-700
+    print ("El número ingresado es el Setecientos", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+
+elif n>=801 and n<=820:
+    n=n-800
+    print ("El número ingresado es el Ochocientos", numero_palabra[n].lower())
+    
+elif n>=821 and n<=829:
+    n=n-800
+    print ("El número ingresado es el Ochocientos", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=830 and n<900:
+    n=n-800
+    print ("El número ingresado es el Ochocientos", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+
+elif n>=901 and n<=920:
+    n=n-900
+    print ("El número ingresado es el Novecientos", numero_palabra[n].lower())
+    
+elif n>=921 and n<=929:
+    n=n-900
+    print ("El número ingresado es el Novecientos", "veinti"+numero_palabra[n%10].lower())
+    
+elif n>=930 and n<=999:
+    n=n-900
+    print ("El número ingresado es el Novecientos", numero_palabra[n-n%10].lower(), "y", numero_palabra[n%10].lower())
+
+else:
+    print("El número está fuera del rango")
